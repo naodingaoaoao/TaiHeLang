@@ -1,0 +1,11 @@
+函数 主():
+    lib = dll("dll.dll")
+    lib.add = ([整数, 整数], 整数)
+    lib.multiply = ([整数, 整数], 整数)
+    lib.greet = ([字符串], 整数)
+    result = lib.add(1, 2)
+    result2 = lib.multiply(1, 2)
+    result3 = lib.greet("Hello")
+    输出(result +"||" + result2)
+    
+    返回 0

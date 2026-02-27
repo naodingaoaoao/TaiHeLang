@@ -1,0 +1,86 @@
+Metadata-Version: 2.4
+Name: taihe-lang
+Version: 0.2.0
+Summary: 结合C++性能与Python简洁性的中文编程语言
+Home-page: https://github.com/taihe-lang/taihe
+Author: 太和语言开发团队
+Author-email: dev@taihe-lang.org
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Compilers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: llvmlite==0.46.0
+Requires-Dist: click==8.1.7
+Requires-Dist: colorama==0.4.6
+Requires-Dist: pygments==2.17.2
+Requires-Dist: pytest==7.4.4
+Requires-Dist: pytest-cov==4.1.0
+Requires-Dist: black==24.1.1
+Requires-Dist: isort==5.13.2
+Requires-Dist: mypy==1.8.0
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# 太和编程语言 (TaiHe Language)
+
+太和是一门面向对象的中文编程语言，旨在将中文代码编译成LLVM中间表示（IR），并进一步生成本地机器码。
+
+## 特性
+
+- 中文关键字和语法，降低中文用户学习门槛
+- 静态类型系统，支持类型推断
+- 面向对象编程，支持类、继承、多态
+- 编译到LLVM IR，享受LLVM优化和跨平台支持
+- 可生成高性能本地机器码
+
+## 快速开始
+
+### 安装依赖
+
+```bash
+pip install -r requirements.txt
+```
+
+### 编译示例
+
+```bash
+python compiler.py 示例.太和
+```
+
+## 项目结构
+
+- `src/` - 编译器源代码
+  - `lexer.py` - 词法分析器
+  - `parser.py` - 语法分析器
+  - `ast.py` - 抽象语法树定义
+  - `codegen.py` - LLVM IR代码生成器
+- `examples/` - 示例程序
+- `tests/` - 测试用例
+- `docs/` - 文档
+
+## 语言规范
+
+详见 [spec.md](spec.md)。
+
+## 开发
+
+欢迎贡献！请参阅 [CONTRIBUTING.md](CONTRIBUTING.md) 了解详情。
+
+## 许可证
+
+MIT

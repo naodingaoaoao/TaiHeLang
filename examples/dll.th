@@ -1,0 +1,9 @@
+DLL函数 add(整数 a, 整数 b):
+    返回 a + b
+
+DLL函数 multiply(整数 a, 整数 b):
+    返回 a * b
+
+DLL函数 greet(字符串 name):
+    输出("你好, {name}!")
+    返回 0

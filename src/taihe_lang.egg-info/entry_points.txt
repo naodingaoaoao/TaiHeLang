@@ -1,0 +1,3 @@
+[console_scripts]
+taihe = taihe.cli:main
+太和 = taihe.cli:main

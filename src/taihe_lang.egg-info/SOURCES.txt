@@ -1,0 +1,16 @@
+README.md
+setup.py
+src/taihe/__init__.py
+src/taihe/ast.py
+src/taihe/cli.py
+src/taihe/codegen.py
+src/taihe/compiler.py
+src/taihe/lexer.py
+src/taihe/parser.py
+src/taihe_lang.egg-info/PKG-INFO
+src/taihe_lang.egg-info/SOURCES.txt
+src/taihe_lang.egg-info/dependency_links.txt
+src/taihe_lang.egg-info/entry_points.txt
+src/taihe_lang.egg-info/requires.txt
+src/taihe_lang.egg-info/top_level.txt
+tests/test_basic.py

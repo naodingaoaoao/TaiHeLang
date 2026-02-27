@@ -2718,16 +2718,8 @@ class CodeGenerator:
         # 生成DLL路径
         path_value = self._generate_expression(expr.path)
         
-        # 声明 LoadLibraryA 函数 (Windows)
-        if not hasattr(self, 'load_library'):
-            load_library_type = ir.FunctionType(
-                ir.PointerType(ir.IntType(8)),  # HMODULE
-                [ir.PointerType(ir.IntType(8))]  # LPCSTR lpLibFileName
-            )
-            self.load_library = ir.Function(self.module, load_library_type, name="LoadLibraryA")
-        
-        # 调用 LoadLibraryA
-        lib_handle = builder.call(self.load_library, [path_value])
+        # 调用 LoadLibraryA (已在 _declare_builtins 中声明)
+        lib_handle = builder.call(self.LoadLibraryA, [path_value])
         
         return lib_handle
     
@@ -2759,22 +2751,14 @@ class CodeGenerator:
             param_types = None
             return_type = None
         
-        # 声明 GetProcAddress 函数
-        if not hasattr(self, 'get_proc_address'):
-            get_proc_address_type = ir.FunctionType(
-                ir.PointerType(ir.IntType(8)),  # FARPROC
-                [ir.PointerType(ir.IntType(8)),  # HMODULE hModule
-                 ir.PointerType(ir.IntType(8))]  # LPCSTR lpProcName
-            )
-            self.get_proc_address = ir.Function(self.module, get_proc_address_type, name="GetProcAddress")
-        
+        # 声明 GetProcAddress 函数 (已在 _declare_builtins 中声明)
         # 创建函数名字符串
         func_name_str = expr.func_name
         func_name_const = self._create_global_string(func_name_str, "dll_func_name")
         func_name_ptr = builder.gep(func_name_const, [ir.Constant(ir.IntType(32), 0), ir.Constant(ir.IntType(32), 0)])
         
         # 获取函数地址
-        func_ptr = builder.call(self.get_proc_address, [lib_handle, func_name_ptr])
+        func_ptr = builder.call(self.GetProcAddress, [lib_handle, func_name_ptr])
         
         # 生成参数
         args = [self._generate_expression(arg) for arg in expr.arguments]
